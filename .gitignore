@@ -1,5 +1,11 @@
+#Folders
 node_modules/
 
+#Files
 contrato.pdf 
 contratoPreenchido.pdf 
-fieldNames.txt
+fieldNames.txt 
+.env
+
+*.txt
+*.pdf
