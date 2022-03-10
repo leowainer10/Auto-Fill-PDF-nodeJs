@@ -1,40 +1,25 @@
-const { PDFDocument } = require("pdf-lib");
-const { readFile, writeFile } = require("fs/promises");
-const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-const dotenv = require("dotenv");
-dotenv.config();
-const defaultFields = [
-  'n_contrato',
-  'resp_venda',
-  'loja',
-  'data_contrato',
-  'tipo_contrato',
-  'cpf_cnpj',
-  'rg_inscEst',
-  'data_nasc',
-  'endereco_atual',
-  'bairro',
-  'cidade',
-  'uf',
-  'cep',
-  'telefone',
-  'email',
-  'cliente_contratante',
-]
+import { PDFDocument } from "pdf-lib";
+import { readFile, writeFile } from "fs/promises";
+import { LoremIpsum } from "lorem-ipsum";
+import { config } from "dotenv";
+config();
 
 async function createPdf(input, output) {
   try {
     const pdfDoc = await PDFDocument.load(await readFile(input));
     // pdf
-
+    
     //Printa no terminal todos os nomes dos campos do Formulario
-
+    
     // const fieldNames = pdfDoc.getForm().getFields().map(f => f.getName());
     // fieldNames.forEach(element =>{
-    //     console.log(element);
-    // });
+      //     console.log(element);
+      // });
+      
+      const defaultFields = pdfDoc.getForm().getFields().map(f => f.getName());
+      console.log (defaultFields)
 
-    //Lorem Ipsum para preencher campos MultiLinhas
+      //Lorem Ipsum para preencher campos MultiLinhas
 
     const lorem = new LoremIpsum({
       sentencesPerParagraph: {
